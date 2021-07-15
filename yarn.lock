@@ -2622,6 +2622,39 @@ expo-constants@~11.0.1:
     expo-modules-core "~0.2.0"
     uuid "^3.3.2"
 
+expo-dev-client@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-0.4.4.tgz#abd230e7332ad18bd86423ee47ea31a1a3ea6ed7"
+  integrity sha512-txCd4CW6Vl6/JB1Kn/jajt7oQv7KWa7x0okguwIGOvJgdFJLpCOva0iwZQiKJUCIUp/hLWYWe6SlbjvCa/U4OA==
+  dependencies:
+    "@expo/config-plugins" "^3.0.0"
+    expo-dev-launcher "0.6.4"
+    expo-dev-menu "0.7.5"
+    expo-dev-menu-interface "0.3.2"
+    expo-updates-interface "~0.2.2"
+
+expo-dev-launcher@0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-0.6.4.tgz#dd9a14e4417f438892596ccc4325937c81592ac3"
+  integrity sha512-VxVRpruRBlBdj2kzEQr/r4Ek7TeJxJVu+REaqODaKEDCopjtiS+btjBjWJbDOgDOUcsevQ5VVlTd2Q2h0MQsLg==
+  dependencies:
+    "@expo/config-plugins" "^3.0.0"
+    resolve-from "^5.0.0"
+    semver "^7.3.5"
+
+expo-dev-menu-interface@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.3.2.tgz#f13338e00d13502b86a0c127980b7ce64d79b32b"
+  integrity sha512-q98h9JQoEq+DmTgGTohiK7R8bd2bMC+9COqlPt7Pl5RxoldF4hArWVRVPlvwCthjbHoDCo+xFllH/ztiH7pLHw==
+
+expo-dev-menu@0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-0.7.5.tgz#ebf0f3df238cab06902dfe6c510fd83e2df169c2"
+  integrity sha512-Xtwwc+9DB646DdQLgomlYj1esq52zkbVuWdF8C7aihwatkq588TY8oPc4XEEfAlWtXUVbGQggGXymqV1H18pcw==
+  dependencies:
+    "@expo/config-plugins" "^3.0.0"
+    expo-dev-menu-interface "0.3.2"
+
 expo-error-recovery@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/expo-error-recovery/-/expo-error-recovery-2.2.0.tgz#89e5494d97347530dd53cd817d7ac63f07bf8de0"
@@ -2669,6 +2702,11 @@ expo-status-bar@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.4.tgz#d8a4c4418b5868c1606969b12bdee85b6fa7d8a4"
   integrity sha512-s7nc496D/Zn1NGiMJ5wu6HyIdXxbgGtmZZtbHm7rpbcmLdf28GmMSNHDx7M0t00BMhky7VAurTCUo+BJs8ugsw==
+
+expo-updates-interface@~0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.2.2.tgz#f754ce2c562f427d87893a9d22a4cbab39e0defd"
+  integrity sha512-Gvjk/6DntlPfkoRrrmbl9jzD2YtlNVa9jV9/T1+zdvg9XvO7H+BUgAQ1NYFFx/3Wdk03z+xfCYugRWk9X5nZ5A==
 
 expo@~42.0.1:
   version "42.0.1"
@@ -3761,6 +3799,13 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
+lru-cache@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+  integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
+  dependencies:
+    yallist "^4.0.0"
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -4632,6 +4677,11 @@ react-native-safe-area-context@3.2.0:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.2.0.tgz#06113c6b208f982d68ab5c3cebd199ca93db6941"
   integrity sha512-k2Nty4PwSnrg9HwrYeeE+EYqViYJoOFwEy9LxL5RIRfoqxAq/uQXNGwpUg2/u4gnKpBbEPa9eRh15KKMe/VHkA==
 
+react-native-tesseract-ocr@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-tesseract-ocr/-/react-native-tesseract-ocr-2.0.3.tgz#a8145344922e0d74ef9d9645ddc715481cd6e1cc"
+  integrity sha512-GD1pKVD+BwfAs/o6FvdKIecOJHamMx/WIdxZxdGB2/tRiIy1uFukptvii7XS5HC7gAiFvMTKFu05DX/LTdWwWw==
+
 react-native-web@~0.13.12:
   version "0.13.18"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.13.18.tgz#964f058a16521a3b9a31b091415edfef5b6ef305"
@@ -4953,6 +5003,13 @@ semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+semver@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
+  integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
+  dependencies:
+    lru-cache "^6.0.0"
 
 send@0.17.1:
   version "0.17.1"
@@ -5668,6 +5725,11 @@ yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
   integrity sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=
+
+yallist@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
+  integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
 yargs-parser@^15.0.1:
   version "15.0.3"
