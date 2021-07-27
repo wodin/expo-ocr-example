@@ -1,6 +1,7 @@
 import "expo-dev-client";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
+import { Asset } from "expo-asset";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 import ProgressCircle from "react-native-progress/Circle";
 import TesseractOcr, {
@@ -20,7 +21,12 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const imgSrc = require("./assets/sample.png");
+  const [imgUri, setImgUri] = useState(null);
   const [text, setText] = useState("");
+
+  Asset.fromModule(require("./assets/sample.png"))
+    .downloadAsync()
+    .then(({ localUri }) => setImgUri(localUri));
 
   useEventListener("onProgressChange", (p) => {
     setProgress(p.percent / 100);
@@ -56,19 +62,21 @@ export default function App() {
             disabled={isLoading}
             title="Recognize"
             onPress={() => {
-              recognizeTextFromImage(imgSrc);
+              recognizeTextFromImage(imgUri);
             }}
           />
         </View>
       </View>
-      <View style={styles.imageContainer}>
-        <Image style={styles.image} source={imgSrc} />
-        {isLoading ? (
-          <ProgressCircle showsText progress={progress} />
-        ) : (
-          <Text>{text}</Text>
-        )}
-      </View>
+      {imgUri && (
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={imgSrc} />
+          {isLoading ? (
+            <ProgressCircle showsText progress={progress} />
+          ) : (
+            <Text>{text}</Text>
+          )}
+        </View>
+      )}
     </View>
   );
 }
