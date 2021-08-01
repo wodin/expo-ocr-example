@@ -1,6 +1,6 @@
 import "expo-dev-client";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Asset } from "expo-asset";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 import ProgressCircle from "react-native-progress/Circle";
@@ -8,6 +8,7 @@ import TesseractOcr, {
   LANG_ENGLISH,
   useEventListener,
 } from "react-native-tesseract-ocr";
+import * as FileSystem from "expo-file-system";
 
 const DEFAULT_HEIGHT = 500;
 const DEFAULT_WIDTH = 600;
@@ -18,11 +19,34 @@ const defaultPickerOptions = {
 };
 
 export default function App() {
+  const [fetchingTrainingData, setFetchingTrainingData] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const imgSrc = require("./assets/sample.png");
   const [imgUri, setImgUri] = useState(null);
   const [text, setText] = useState("");
+
+  async function getTrainedData() {
+    const trainedDataUrl =
+      "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/eng.traineddata";
+    const trainedDataDir = FileSystem.cacheDirectory + "tessdata/";
+    const trainedDataPath = trainedDataDir + "eng.traineddata";
+    const pathInfo = await FileSystem.getInfoAsync(trainedDataPath);
+    if (pathInfo.exists) {
+      setFetchingTrainingData(false);
+    } else {
+      console.log("Training data does not exist. Downloading...");
+      await FileSystem.makeDirectoryAsync(trainedDataDir, { intermediates: true });
+      FileSystem.downloadAsync(trainedDataUrl, trainedDataPath)
+        .then(({ uri }) => {
+          console.log("Finished downloading to ", uri);
+          setFetchingTrainingData(false);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }
 
   Asset.fromModule(require("./assets/sample.png"))
     .downloadAsync()
@@ -31,6 +55,10 @@ export default function App() {
   useEventListener("onProgressChange", (p) => {
     setProgress(p.percent / 100);
   });
+
+  useEffect(() => {
+    getTrainedData();
+  }, []);
 
   const recognizeTextFromImage = async (path) => {
     setIsLoading(true);
@@ -59,7 +87,7 @@ export default function App() {
       <View style={styles.options}>
         <View style={styles.button}>
           <Button
-            disabled={isLoading}
+            disabled={fetchingTrainingData || isLoading}
             title="Recognize"
             onPress={() => {
               recognizeTextFromImage(imgUri);
