@@ -35,15 +35,15 @@ export default function App() {
     if (pathInfo.exists) {
       setFetchingTrainingData(false);
     } else {
-      console.log("Training data does not exist. Downloading...");
+      alert("Training data does not exist. Downloading...");
       await FileSystem.makeDirectoryAsync(trainedDataDir, { intermediates: true });
       FileSystem.downloadAsync(trainedDataUrl, trainedDataPath)
         .then(({ uri }) => {
-          console.log("Finished downloading to ", uri);
+          alert(`Finished downloading to ${uri}`);
           setFetchingTrainingData(false);
         })
         .catch((error) => {
-          console.error(error);
+          alert(error);
         });
     }
   }
