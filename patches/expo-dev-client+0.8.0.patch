@@ -1,0 +1,12 @@
+diff --git a/node_modules/expo-dev-client/android/build.gradle b/node_modules/expo-dev-client/android/build.gradle
+index 54e54d1..dc48d53 100644
+--- a/node_modules/expo-dev-client/android/build.gradle
++++ b/node_modules/expo-dev-client/android/build.gradle
+@@ -73,7 +73,6 @@ repositories {
+     url "$rootDir/../node_modules/jsc-android/dist"
+   }
+   google()
+-  jcenter()
+ }
+ 
+ dependencies {

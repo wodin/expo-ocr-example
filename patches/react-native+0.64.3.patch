@@ -1,0 +1,20 @@
+diff --git a/node_modules/react-native/template/android/build.gradle b/node_modules/react-native/template/android/build.gradle
+index 93232f5..fe8c659 100644
+--- a/node_modules/react-native/template/android/build.gradle
++++ b/node_modules/react-native/template/android/build.gradle
+@@ -10,7 +10,6 @@ buildscript {
+     }
+     repositories {
+         google()
+-        jcenter()
+     }
+     dependencies {
+         classpath("com.android.tools.build:gradle:4.1.0")
+@@ -32,7 +31,6 @@ allprojects {
+         }
+ 
+         google()
+-        jcenter()
+         maven { url 'https://www.jitpack.io' }
+     }
+ }
