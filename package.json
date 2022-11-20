@@ -14,7 +14,7 @@
     "expo-dev-client": "~2.0.0",
     "expo-file-system": "~15.1.1",
     "expo-status-bar": "~1.4.2",
-    "patch-package": "^6.4.7",
+    "patch-package": "^6.5.0",
     "postinstall-postinstall": "^2.1.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
