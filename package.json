@@ -9,23 +9,23 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "expo": "^44.0.0",
-    "expo-asset": "~8.4.6",
-    "expo-dev-client": "~0.8.0",
-    "expo-file-system": "~13.1.0",
-    "expo-status-bar": "~1.2.0",
+    "expo": "^47.0.0",
+    "expo-asset": "~8.6.2",
+    "expo-dev-client": "~2.0.0",
+    "expo-file-system": "~15.1.1",
+    "expo-status-bar": "~1.4.2",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-native": "0.64.3",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-native": "0.70.5",
     "react-native-progress": "^5.0.0",
-    "react-native-svg": "12.1.1",
+    "react-native-svg": "13.4.0",
     "react-native-tesseract-ocr": "^2.0.3",
-    "react-native-web": "0.17.1"
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.19.3"
   },
   "private": true
 }
