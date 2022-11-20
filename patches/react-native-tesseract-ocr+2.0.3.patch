@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native-tesseract-ocr/android/build.gradle b/node_modules/react-native-tesseract-ocr/android/build.gradle
-index 885c6e5..0d311e0 100644
+index 885c6e5..1901df3 100644
 --- a/node_modules/react-native-tesseract-ocr/android/build.gradle
 +++ b/node_modules/react-native-tesseract-ocr/android/build.gradle
 @@ -20,7 +20,7 @@ def safeExtGet(prop, fallback) {
@@ -20,6 +20,15 @@ index 885c6e5..0d311e0 100644
  
  android {
      compileSdkVersion safeExtGet('compileSdkVersion', DEFAULT_COMPILE_SDK_VERSION)
+@@ -110,7 +110,7 @@ afterEvaluate { project ->
+     task androidJavadoc(type: Javadoc) {
+         source = android.sourceSets.main.java.srcDirs
+         classpath += files(android.bootClasspath)
+-        classpath += files(project.getConfigurations().getByName('compile').asList())
++        classpath += files(project.getConfigurations().getByName('implementation').asList())
+         include '**/*.java'
+     }
+ 
 diff --git a/node_modules/react-native-tesseract-ocr/android/src/main/java/com/reactlibrary/TesseractOcrModule.java b/node_modules/react-native-tesseract-ocr/android/src/main/java/com/reactlibrary/TesseractOcrModule.java
 index e93e31c..72d6fa3 100644
 --- a/node_modules/react-native-tesseract-ocr/android/src/main/java/com/reactlibrary/TesseractOcrModule.java
