@@ -1,3 +1,25 @@
+diff --git a/node_modules/react-native-tesseract-ocr/android/build.gradle b/node_modules/react-native-tesseract-ocr/android/build.gradle
+index 885c6e5..0d311e0 100644
+--- a/node_modules/react-native-tesseract-ocr/android/build.gradle
++++ b/node_modules/react-native-tesseract-ocr/android/build.gradle
+@@ -20,7 +20,7 @@ def safeExtGet(prop, fallback) {
+ }
+ 
+ apply plugin: 'com.android.library'
+-apply plugin: 'maven'
++apply plugin: 'maven-publish'
+ 
+ buildscript {
+     // The Android Gradle plugin is only required when opening the android folder stand-alone.
+@@ -39,7 +39,7 @@ buildscript {
+ }
+ 
+ apply plugin: 'com.android.library'
+-apply plugin: 'maven'
++apply plugin: 'maven-publish'
+ 
+ android {
+     compileSdkVersion safeExtGet('compileSdkVersion', DEFAULT_COMPILE_SDK_VERSION)
 diff --git a/node_modules/react-native-tesseract-ocr/android/src/main/java/com/reactlibrary/TesseractOcrModule.java b/node_modules/react-native-tesseract-ocr/android/src/main/java/com/reactlibrary/TesseractOcrModule.java
 index e93e31c..72d6fa3 100644
 --- a/node_modules/react-native-tesseract-ocr/android/src/main/java/com/reactlibrary/TesseractOcrModule.java
