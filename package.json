@@ -21,8 +21,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@types/react": "~18.3.12",
     "patch-package": "^8.0.0",
-    "postinstall-postinstall": "^2.1.0"
+    "postinstall-postinstall": "^2.1.0",
+    "typescript": "^5.3.3"
   },
   "expo": {
     "doctor": {
