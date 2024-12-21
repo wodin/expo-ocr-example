@@ -4,26 +4,19 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-    "postinstall": "patch-package"
+    "web": "expo start --web"
   },
   "dependencies": {
     "expo": "^52.0.21",
     "expo-asset": "~11.0.1",
     "expo-dev-client": "~5.0.6",
-    "expo-file-system": "~18.0.6",
     "expo-status-bar": "~2.0.0",
     "react": "18.3.1",
-    "react-native": "0.76.5",
-    "react-native-progress": "^5.0.0",
-    "react-native-svg": "15.8.0",
-    "react-native-tesseract-ocr": "^2.0.3"
+    "react-native": "0.76.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~18.3.12",
-    "patch-package": "^8.0.0",
-    "postinstall-postinstall": "^2.1.0",
     "typescript": "^5.3.3"
   },
   "expo": {

@@ -3,65 +3,23 @@ import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { Asset } from "expo-asset";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
-import ProgressCircle from "react-native-progress/Circle";
-import TesseractOcr, {
-  LANG_ENGLISH,
-  useEventListener,
-} from "react-native-tesseract-ocr";
-import * as FileSystem from "expo-file-system";
+import MlKitOcr from "./modules/ml-kit-ocr";
 
 export default function App() {
-  const [fetchingTrainingData, setFetchingTrainingData] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
   const imgSrc = require("./assets/sample.png");
   const [imgUri, setImgUri] = useState(null);
   const [text, setText] = useState("");
-
-  async function getTrainedData() {
-    const trainedDataUrl =
-      "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/eng.traineddata";
-    const trainedDataDir = FileSystem.cacheDirectory + "tessdata/";
-    const trainedDataPath = trainedDataDir + "eng.traineddata";
-    const pathInfo = await FileSystem.getInfoAsync(trainedDataPath);
-    if (pathInfo.exists) {
-      setFetchingTrainingData(false);
-    } else {
-      alert("Training data does not exist. Downloading...");
-      await FileSystem.makeDirectoryAsync(trainedDataDir, { intermediates: true });
-      FileSystem.downloadAsync(trainedDataUrl, trainedDataPath)
-        .then(({ uri }) => {
-          alert(`Finished downloading to ${uri}`);
-          setFetchingTrainingData(false);
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
-  }
 
   Asset.fromModule(require("./assets/sample.png"))
     .downloadAsync()
     .then(({ localUri }) => setImgUri(localUri));
 
-  useEventListener("onProgressChange", (p) => {
-    setProgress(p.percent / 100);
-  });
-
-  useEffect(() => {
-    getTrainedData();
-  }, []);
-
   const recognizeTextFromImage = async (path) => {
     setIsLoading(true);
 
     try {
-      const tesseractOptions = {};
-      const recognizedText = await TesseractOcr.recognize(
-        path,
-        LANG_ENGLISH,
-        tesseractOptions
-      );
+      const recognizedText = await MlKitOcr.recognizeTextAsync(path);
       setText(recognizedText);
     } catch (err) {
       console.error(err);
@@ -69,7 +27,6 @@ export default function App() {
     }
 
     setIsLoading(false);
-    setProgress(0);
   };
 
   return (
@@ -79,7 +36,7 @@ export default function App() {
       <View style={styles.options}>
         <View style={styles.button}>
           <Button
-            disabled={fetchingTrainingData || isLoading}
+            disabled={isLoading}
             title="Recognize"
             onPress={() => {
               recognizeTextFromImage(imgUri);
@@ -90,11 +47,7 @@ export default function App() {
       {imgUri && (
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={imgSrc} />
-          {isLoading ? (
-            <ProgressCircle showsText progress={progress} />
-          ) : (
-            <Text style={styles.resultText}>{text}</Text>
-          )}
+          {!isLoading && <Text style={styles.resultText}>{text}</Text>}
         </View>
       )}
     </View>
@@ -141,10 +94,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10,
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5,
   },
 });
