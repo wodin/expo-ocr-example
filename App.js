@@ -10,14 +10,6 @@ import TesseractOcr, {
 } from "react-native-tesseract-ocr";
 import * as FileSystem from "expo-file-system";
 
-const DEFAULT_HEIGHT = 500;
-const DEFAULT_WIDTH = 600;
-const defaultPickerOptions = {
-  cropping: true,
-  height: DEFAULT_HEIGHT,
-  width: DEFAULT_WIDTH,
-};
-
 export default function App() {
   const [fetchingTrainingData, setFetchingTrainingData] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -101,7 +93,7 @@ export default function App() {
           {isLoading ? (
             <ProgressCircle showsText progress={progress} />
           ) : (
-            <Text>{text}</Text>
+            <Text style={styles.resultText}>{text}</Text>
           )}
         </View>
       )}
@@ -112,9 +104,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#F5FCFF",
+    paddingTop: 30,
   },
   options: {
     flexDirection: "row",
@@ -125,13 +118,24 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   imageContainer: {
-    justifyContent: "center",
+    width: "100%",
+    flex: 1,
+    justifyContent: "flex-start",
     alignItems: "center",
+    gap: 5,
+    padding: 5,
   },
   image: {
-    marginVertical: 15,
-    height: DEFAULT_HEIGHT / 2.5,
-    width: DEFAULT_WIDTH / 2.5,
+    width: "100%",
+    height: 200,
+  },
+  resultText: {
+    flex: 1,
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "blue",
+    padding: 10,
+    borderRadius: 10,
   },
   title: {
     fontSize: 20,
