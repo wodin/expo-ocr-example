@@ -1,6 +1,7 @@
 import "expo-dev-client";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
+import * as FileSystem from "expo-file-system";
 import { Asset } from "expo-asset";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 import MlKitOcr from "./modules/ml-kit-ocr";
@@ -13,7 +14,17 @@ export default function App() {
 
   Asset.fromModule(require("./assets/sample.png"))
     .downloadAsync()
-    .then(({ localUri }) => setImgUri(localUri));
+    .then(async ({ localUri }) => {
+      const cachePath = FileSystem.cacheDirectory + "sample.png";
+      await FileSystem.copyAsync({ from: localUri, to: cachePath });
+      return cachePath;
+    })
+    .then((finalPath) => {
+      setImgUri(finalPath);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
   const recognizeTextFromImage = async (path) => {
     setIsLoading(true);
@@ -32,7 +43,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Expo OCR Example</Text>
-      <StatusBar style="auto" />
       <View style={styles.options}>
         <View style={styles.button}>
           <Button
@@ -50,6 +60,7 @@ export default function App() {
           {!isLoading && <Text style={styles.resultText}>{text}</Text>}
         </View>
       )}
+      <StatusBar style="auto" />
     </View>
   );
 }
