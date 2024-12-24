@@ -14,3 +14,4 @@ web-build/
 
 /android/
 /ios/
+modules/*/android/build/
