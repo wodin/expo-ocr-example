@@ -12,19 +12,21 @@ export default function App() {
   const [imgUri, setImgUri] = useState(null);
   const [text, setText] = useState("");
 
-  Asset.fromModule(require("./assets/sample.png"))
-    .downloadAsync()
-    .then(async ({ localUri }) => {
-      const cachePath = FileSystem.cacheDirectory + "sample.png";
-      await FileSystem.copyAsync({ from: localUri, to: cachePath });
-      return cachePath;
-    })
-    .then((finalPath) => {
-      setImgUri(finalPath);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  useEffect(() => {
+    Asset.fromModule(imgSrc)
+      .downloadAsync()
+      .then(async ({ localUri }) => {
+        const cachePath = FileSystem.cacheDirectory + "sample.png";
+        await FileSystem.copyAsync({ from: localUri, to: cachePath });
+        return cachePath;
+      })
+      .then((finalPath) => {
+        setImgUri(finalPath);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   const recognizeTextFromImage = async (path) => {
     setIsLoading(true);
