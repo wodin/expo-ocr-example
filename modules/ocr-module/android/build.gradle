@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 
-group = 'expo.modules.mlkitocr'
+group = 'expo.modules.ocrmodule'
 version = '0.6.3'
 
 def expoModulesCorePlugin = new File(project(":expo-modules-core").projectDir.absolutePath, "ExpoModulesCorePlugin.gradle")
@@ -32,7 +32,7 @@ if (useManagedAndroidSdkVersions) {
 }
 
 android {
-  namespace "expo.modules.mlkitocr"
+  namespace "expo.modules.ocrmodule"
   defaultConfig {
     versionCode 1
     versionName "0.6.3"

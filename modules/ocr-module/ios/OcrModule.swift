@@ -1,21 +1,21 @@
 import ExpoModulesCore
 import Vision
 
-public class MlKitOcrModule: Module {
+public class OcrModule: Module {
   // Each module class must implement the definition function. The definition consists of components
   // that describes the module's functionality and behavior.
   // See https://docs.expo.dev/modules/module-api for more details about available components.
   public func definition() -> ModuleDefinition {
     // Sets the name of the module that JavaScript code will use to refer to the module. Takes a string as an argument.
     // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
-    // The module will be accessible from `requireNativeModule('MlKitOcr')` in JavaScript.
-    Name("MlKitOcr")
+    // The module will be accessible from `requireNativeModule('OcrModule')` in JavaScript.
+    Name("OcrModule")
 
     // Defines a JavaScript function that always returns a Promise and whose native code
     // is by default dispatched on the different thread than the JavaScript runtime runs on.
     AsyncFunction("recognizeTextAsync") { (uriString: String) -> String in
       guard let url = URL(string: uriString), url.isFileURL else {
-        throw NSError(domain: "MlKitOcr", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid file URI"])
+        throw NSError(domain: "OcrModule", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid file URI"])
       }
       let fileUrl = url
 
@@ -23,7 +23,7 @@ public class MlKitOcrModule: Module {
       guard let imageData = try? Data(contentsOf: fileUrl),
             let uiImage = UIImage(data: imageData),
             let cgImage = uiImage.cgImage else {
-        throw NSError(domain: "MlKitOcr",
+        throw NSError(domain: "OcrModule",
                       code: 1,
                       userInfo: [NSLocalizedDescriptionKey: "Failed to load image from: \(uriString)"])
       }

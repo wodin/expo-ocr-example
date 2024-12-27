@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import * as FileSystem from "expo-file-system";
 import { Asset } from "expo-asset";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
-import MlKitOcr from "./modules/ml-kit-ocr";
+import OcrModule from "./modules/ocr-module";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +32,7 @@ export default function App() {
     setIsLoading(true);
 
     try {
-      const recognizedText = await MlKitOcr.recognizeTextAsync(path);
+      const recognizedText = await OcrModule.recognizeTextAsync(path);
       setText(recognizedText);
     } catch (err) {
       console.error(err);

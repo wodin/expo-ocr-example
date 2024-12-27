@@ -5,12 +5,12 @@
   ],
   "apple": {
     "modules": [
-      "MlKitOcrModule"
+      "OcrModule"
     ]
   },
   "android": {
     "modules": [
-      "expo.modules.mlkitocr.MlKitOcrModule"
+      "expo.modules.ocrmodule.OcrModule"
     ]
   }
 }
